@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+li,
+td {
+  cursor: pointer;
+}
+
+
+.table td,
+.list-group-item {
+  border: 1px solid transparent;
+}
+
+
+.table td:hover,
+.list-group-item:hover {
+  border: 1px solid black;
+}
+

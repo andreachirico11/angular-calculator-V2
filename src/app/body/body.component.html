@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-8 mx-auto mt-5">
+    <div class="card border-primary p-3">
+      <div class="card-title text-center">
+        <h2 class="">Calculator V2</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <app-display></app-display>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <app-keyboard (keyboardEvent)="buildNumber($event)"
+            ></app-keyboard>
+          </div>
+          <div class="col-md-6">
+            <app-actions></app-actions>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
