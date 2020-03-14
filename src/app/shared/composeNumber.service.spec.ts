@@ -36,7 +36,6 @@ describe('COMPOSE-NUMBER-SERVICE', () => {
     let prevNum;
     let newNum;
     let isnotPositive = true;
-    let decimalMultiplier;
     let result;
 
     prevNum = 0;
@@ -47,6 +46,10 @@ describe('COMPOSE-NUMBER-SERVICE', () => {
     newNum = 3;
     result = service.composeNumber(newNum, prevNum, isnotPositive);
     expect(result).toBe(-13);
+    prevNum = 0;
+    newNum = 0;
+    result = service.composeNumber(newNum, prevNum, isnotPositive);
+    expect(result).toBe(0);
   });
 
   it('should create a decimal number', () => {

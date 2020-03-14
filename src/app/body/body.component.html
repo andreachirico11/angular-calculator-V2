@@ -7,7 +7,11 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <app-display></app-display>
+            <app-display
+            [mainNumber]="mainNumber"
+            [result]="resultsArray[(resultsArray.length)-1]"
+            [chosenSign]="chosenOperation"
+            ></app-display>
           </div>
         </div>
         <div class="row">
@@ -16,7 +20,10 @@
             ></app-keyboard>
           </div>
           <div class="col-md-6">
-            <app-actions></app-actions>
+            <app-actions
+            (signEvent)="retrieveSign($event)"
+            (actionEvent)="executeChosenAction($event)"
+            ></app-actions>
           </div>
         </div>
       </div>
