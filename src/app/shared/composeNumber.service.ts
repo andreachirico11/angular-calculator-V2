@@ -13,7 +13,10 @@ export class ComposeNumberService {
       if(isNotPositive) {
         if(prevNum > 0) {
            return prevNum *= -1;
-        } else {
+        } else if( prevNum <0 && newNum === 0) {
+          return prevNum *= -1;
+        }
+         else {
           newNum *= -1;
         }
       }
@@ -25,6 +28,15 @@ export class ComposeNumberService {
       // create and return number
       prevNum *= 10;
       return prevNum + newNum;
+  }
+
+  eraseNumber(previousNumber: number) {
+    const stringNumber = previousNumber.toString();
+    const stringNumberLength = stringNumber.length
+    if (stringNumberLength === 1) {
+      return 0;
+    }
+    return parseFloat(stringNumber.substring(0, (stringNumber.length) - 1));
   }
 
 }

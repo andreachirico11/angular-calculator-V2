@@ -50,6 +50,11 @@ describe('COMPOSE-NUMBER-SERVICE', () => {
     newNum = 0;
     result = service.composeNumber(newNum, prevNum, isnotPositive);
     expect(result).toBe(0);
+    prevNum = 0;
+    newNum = 1;
+    result = service.composeNumber(newNum, prevNum, isnotPositive);
+    expect(result).toBe(-1);
+
   });
 
   it('should create a decimal number', () => {
@@ -94,5 +99,37 @@ describe('COMPOSE-NUMBER-SERVICE', () => {
     result = service.composeNumber(newNum, prevNum, isnotPositive, decimalDivider);
     expect(result).toBe(-243.3);
   })
+
+
+
+  it(' is able to erase last digit', () => {
+
+    let prevNum;
+    let nextNumber;
+
+    prevNum = 5;
+    nextNumber = service.eraseNumber(prevNum);
+    expect(nextNumber).toBe(0);
+
+    prevNum = 54;
+    nextNumber = service.eraseNumber(prevNum);
+    expect(nextNumber).toBe(5);
+
+    prevNum = 1.45;
+    nextNumber = service.eraseNumber(prevNum);
+    expect(nextNumber).toBe(1.4);
+
+    prevNum = -43;
+    nextNumber = service.eraseNumber(prevNum);
+    expect(nextNumber).toBe(-4);
+
+    prevNum = -0.423;
+    nextNumber = service.eraseNumber(prevNum);
+    expect(nextNumber).toBe(-0.42);
+
+    prevNum = -0.1;
+    nextNumber = service.eraseNumber(prevNum);
+    expect(nextNumber).toBe(-0);
+  });
 
 });

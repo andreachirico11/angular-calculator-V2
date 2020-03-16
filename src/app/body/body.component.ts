@@ -1,6 +1,6 @@
-import { Component, Output } from "@angular/core";
+import { Component } from "@angular/core";
 import { ComposeNumberService } from "../shared/composeNumber.service";
-import { actionsEnum, mathOpsEnum } from '../shared/enums';
+import { actionsEnum } from '../shared/enums';
 import { ExecuteOperationService } from '../shared/executeOperation.service';
 
 
@@ -23,6 +23,7 @@ export class BodyComponent {
   buildNumber(keyPressed: number) {
     if (keyPressed === -1) {
       this.isNotPositive = true;
+      keyPressed = 0;
     }
     if (keyPressed === 0.1) {
       this.isDecimal = true;
@@ -43,6 +44,10 @@ export class BodyComponent {
         this.isNotPositive
       );
     }
+  }
+
+  erase() {
+    this.mainNumber = this.composeNumberService.eraseNumber(this.mainNumber);
   }
 
   retrieveSign(sign: string) {
@@ -80,9 +85,17 @@ export class BodyComponent {
         this.isNotPositive = false;
         break;
 
-
       case actionsEnum.Back:
-        // retrieve the previous result
+        if(this.resultsArray.length === 0) {
+          break;
+        }
+        this.mainNumber = this.resultsArray[(this.resultsArray.length)-1];
+        this.resultsArray.pop();
+        this.chosenOperation = null;
+        this.isDecimal = false;
+        this.isNotPositive = false;
+        break;
+
       case actionsEnum.Cancel:
         this.isNotPositive = false;
         this.isDecimal = false;

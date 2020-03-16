@@ -46,6 +46,21 @@ let fixture: ComponentFixture<BodyComponent>;
   expect(bodyComponent.mainNumber).toBe(3.1233);
  });
 
+ it('correctly creates negative number', () => {
+  bodyComponent.isDecimal = false;
+  bodyComponent.isNotPositive = false;
+
+  bodyComponent.mainNumber = 0;
+  bodyComponent.buildNumber(-1);
+  expect(bodyComponent.mainNumber).toBe(0);
+  bodyComponent.mainNumber = -35;
+  bodyComponent.buildNumber(-1);
+  expect(bodyComponent.mainNumber).toBe(35);
+
+
+
+ });
+
 
 //  ########################### OPERATIONS #################################################################
 
@@ -220,7 +235,48 @@ let fixture: ComponentFixture<BodyComponent>;
  });
 
 
- // NNED TO TEST NEGATIVE AND DECIMAL CASES
+ // NEED TO TEST NEGATIVE AND DECIMAL CASES
+
+
+
+// ################################################ ERASE ##################################################################
+
+it('erases correctly', () => {
+  bodyComponent.mainNumber = 0;
+  bodyComponent.erase();
+  expect(bodyComponent.mainNumber).toBe(0);
+  bodyComponent.mainNumber = 23;
+  bodyComponent.erase();
+  expect(bodyComponent.mainNumber).toBe(2);
+  bodyComponent.mainNumber = 0.46;
+  bodyComponent.erase();
+  expect(bodyComponent.mainNumber).toBe(0.4);
+  bodyComponent.mainNumber = -3456;
+  bodyComponent.erase();
+  expect(bodyComponent.mainNumber).toBe(-345);
+});
+
+// ##################################################### BACK #####################################################
+
+it('CE correcty', () => {
+  bodyComponent.mainNumber = 1;
+  bodyComponent.resultsArray = [1,2,3];
+  bodyComponent.chosenOperation = mathOpsEnum.addition;
+  bodyComponent.executeChosenAction(actionsEnum.Back);
+  expect(bodyComponent.mainNumber).toBe(3);
+  expect(bodyComponent.resultsArray).toEqual([1,2]);
+  bodyComponent.retrieveSign(bodyComponent.chosenOperation);
+  expect(bodyComponent.mainNumber).toBe(0);
+  expect(bodyComponent.resultsArray).toEqual([1,2,3]);
+
+  bodyComponent.mainNumber = 1;
+  bodyComponent.resultsArray = [];
+  bodyComponent.chosenOperation = mathOpsEnum.addition;
+  bodyComponent.executeChosenAction(actionsEnum.Back);
+  expect(bodyComponent.mainNumber).toBe(1);
+  expect(bodyComponent.resultsArray).toEqual([]);
+
+});
 
 
 });
