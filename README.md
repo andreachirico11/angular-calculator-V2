@@ -1,9 +1,8 @@
 # Calculator
 
-> Simple Calculator app created with Angular and Bootstrap
+Simple Calculator app created with Angular and Bootstrap 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
+### --->>> [CALCULATORRRRR](https://angularcalculator-c0a8b.web.app/)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
